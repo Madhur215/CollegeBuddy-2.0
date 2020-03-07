@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">CollegeBuddyVersion2</string>
+
+    <string-array name="branch_drop_down">
+        <item>CSE</item>
+        <item>IT</item>
+        <item>ECE</item>
+        <item>EN</item>
+        <item>ME</item>
+        <item>CIVIL</item>
+    </string-array>
+    <string name="sign_up">Sign up</string>
+    <string name="choose_year">Select Year</string>
+    <string-array name="select_year_drop_down">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="topics">
+        <item>GATE</item>
+        <item>CAT</item>
+        <item>RESEARCH</item>
+        <item>JOB</item>
+        <item>MACHINE LEARNING</item>
+        <item>ROBOTICS</item>
+
+    </string-array>
+
+    <string name="choose_college">Select College</string>
+    <string-array name="select_college_drop_down">
+        <item>AKGEC , Ghaziabad</item>
+        <item>ABESEC, Ghaziabad</item>
+        <item>DTU, Delhi</item>
+        <item>IIT, Delhi</item>
+        <item>NSUT, New Delhi</item>
+    </string-array>
+</resources>

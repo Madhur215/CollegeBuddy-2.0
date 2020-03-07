@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EC3748</color>
+    <color name="colorPrimaryDark">#EC3748</color>
+    <color name="colorAccent">#EC3748</color>
+    <color name="dropDown">#C9C8C8</color>
+</resources>
