@@ -22,13 +22,13 @@
         android:id="@+id/select_college_drop_down"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="14dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/spinner_background"
         android:entries="@array/select_college_drop_down"
-        android:prompt="@string/choose_college"
-        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
@@ -55,10 +55,9 @@
         android:id="@+id/select_year_drop_down"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/spinner_background"
         android:entries="@array/select_year_drop_down"
-        android:prompt="@string/choose_year"
         app:layout_constraintStart_toStartOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -68,6 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
         android:text="Select Branch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toTopOf="@+id/textView23" />
 
@@ -78,7 +79,6 @@
         android:layout_height="40dp"
         android:background="@drawable/spinner_background"
         android:entries="@array/branch_drop_down"
-        android:prompt="Select Branch"
         app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toTopOf="@+id/select_year_drop_down" />
 
@@ -86,12 +86,13 @@
         android:id="@+id/topics_drop_down"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/spinner_background"
         android:entries="@array/topics"
-        app:layout_constraintStart_toStartOf="@+id/textView26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView

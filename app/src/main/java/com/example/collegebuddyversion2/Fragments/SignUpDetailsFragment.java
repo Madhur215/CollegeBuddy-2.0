@@ -1,8 +1,8 @@
 package com.example.collegebuddyversion2.Fragments;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.collegebuddyversion2.Activities.MainActivity;
+
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
-import com.example.collegebuddyversion2.Models.LoginResponse;
 import com.example.collegebuddyversion2.Models.SignUpData;
 import com.example.collegebuddyversion2.Models.SignUpResponse;
 import com.example.collegebuddyversion2.R;
@@ -51,10 +50,10 @@ public class SignUpDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.sign_up_details_fragment, container, false);
 
         jsonApiHolder = retrofitInstance.getRetrofitInstance(getContext()).create(JsonApiHolder.class);
-        sp_branch = getView().findViewById(R.id.select_branch_drop_down);
-        sp_year = getView().findViewById(R.id.select_year_drop_down);
-        sp_college = getView().findViewById(R.id.select_college_drop_down);
-        Button sign_up_button = getView().findViewById(R.id.sign_up_button_details_layout);
+        sp_branch = view.findViewById(R.id.select_branch_drop_down);
+        sp_year = view.findViewById(R.id.select_year_drop_down);
+        sp_college = view.findViewById(R.id.select_college_drop_down);
+        Button sign_up_button = view.findViewById(R.id.sign_up_button_details_layout);
         full_name = SignUpFragment.getFull_name();
         password = SignUpFragment.getPassword();
         mobile_number = SignUpFragment.getPhone();
