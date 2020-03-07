@@ -6,6 +6,7 @@ import com.example.collegebuddyversion2.Models.SignUpData;
 import com.example.collegebuddyversion2.Models.SignUpResponse;
 
 import io.reactivex.Single;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -22,7 +23,8 @@ public interface JsonApiHolder {
     @POST("Member/Verify/{ID}")
     Single<String> verifyPhone(@Path("ID") String id , @Body String otp);
 
-
+    @POST("Member/ResendOtp/{ID}")
+    Single<ResponseBody> resendOTP(@Path("ID") String ID);
 
 
 }
