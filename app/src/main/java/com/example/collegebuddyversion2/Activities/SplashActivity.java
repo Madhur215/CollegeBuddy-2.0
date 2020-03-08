@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.collegebuddyversion2.Models.LoginData;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.Utils.prefUtils;
 
@@ -28,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Intent intent = new Intent(SplashActivity.this , MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this , LoginSignupActivity.class);
                     startActivity(intent);
                     finish();
                 }
