@@ -55,8 +55,6 @@ public class prefUtils {
         editor.commit();
 
         Intent i = new Intent(ctx, LoginSignupActivity.class);
-//        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ctx.startActivity(i);
 
     }

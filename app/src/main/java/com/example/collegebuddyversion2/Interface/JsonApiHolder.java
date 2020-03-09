@@ -32,7 +32,7 @@ public interface JsonApiHolder {
     Single<ResponseBody> resendOTP(@Path("ID") String ID);
 
     @GET("Dashboard/Home")
-    Single<List<QuestionsResponse>> getQuestions(@Query("token") String token);
+    Call<List<QuestionsResponse>> getQuestions(@Query("token") String token);
 
 
 }
