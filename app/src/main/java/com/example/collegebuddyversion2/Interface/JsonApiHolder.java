@@ -1,5 +1,6 @@
 package com.example.collegebuddyversion2.Interface;
 
+import com.example.collegebuddyversion2.Models.Answers;
 import com.example.collegebuddyversion2.Models.LoginData;
 import com.example.collegebuddyversion2.Models.LoginResponse;
 import com.example.collegebuddyversion2.Models.QuestionsResponse;
@@ -34,5 +35,9 @@ public interface JsonApiHolder {
     @GET("Dashboard/Home")
     Call<List<QuestionsResponse>> getQuestions(@Query("token") String token);
 
+    @POST("Dashboard/AskQuestion")
+    Call<ResponseBody> askQuestion(@Query("token") String token , @Body String question) ;
 
+    @GET("Dashboard/QuestionDetails/{QID}")
+    Call<List<Answers>> getAnswers(@Path("QID") String id , @Query("token") String token);
 }

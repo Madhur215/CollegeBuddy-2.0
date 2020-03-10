@@ -1,16 +1,12 @@
 package com.example.collegebuddyversion2.Repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-import com.example.collegebuddyversion2.DAO.QuestionsDAO;
-import com.example.collegebuddyversion2.Database.Database;
 import com.example.collegebuddyversion2.Entity.QuestionsEntity;
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
 import com.example.collegebuddyversion2.Models.QuestionsResponse;
@@ -30,15 +26,11 @@ import retrofit2.Response;
 
 public class QuestionsRepository {
 
-    private QuestionsDAO questionsDAO;
-    private LiveData<List<QuestionsEntity>> questionsList;
+    private MutableLiveData<List<QuestionsEntity>> questionsList = new MutableLiveData<>();
     private JsonApiHolder jsonApiHolder;
     private Application application;
 
     public QuestionsRepository(Application application){
-        Database database = Database.getInstance(application);
-        questionsDAO = database.questionsDAO();
-        questionsList = questionsDAO.getAllQuestions();
         jsonApiHolder = retrofitInstance.getRetrofitInstance(application).create(JsonApiHolder.class);
         this.application = application;
         getQuestions();
@@ -86,13 +78,10 @@ public class QuestionsRepository {
 //                })
 //        );
         Call<List<QuestionsResponse>> call = jsonApiHolder.getQuestions(prefUtils.getToken());
-
-
         call.enqueue(new Callback<List<QuestionsResponse>>() {
             @Override
             public void onResponse(Call<List<QuestionsResponse>> call,
                                    Response<List<QuestionsResponse>> response) {
-//                progress_image.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     List<QuestionsEntity> questionsEntityList = new ArrayList<>();
                     try {
@@ -107,11 +96,9 @@ public class QuestionsRepository {
                             String date = question.getAsked_on_date();
                             String image = question.getImage();
                             QuestionsEntity entity = new QuestionsEntity(q, qId, name, date, image);
-
-
                             questionsEntityList.add(entity);
                         }
-                        new QuestionsInsertAsyncTask(questionsDAO).execute(questionsEntityList);
+                        questionsList.setValue(questionsEntityList);
                     } catch (NullPointerException e) {
                         Log.d(String.valueOf(e), "onResponse: EMPTY ARRAY");
                     }
@@ -142,22 +129,6 @@ public class QuestionsRepository {
 
     public LiveData<List<QuestionsEntity>> getQuestionsList(){
         return questionsList;
-    }
-
-    private static class QuestionsInsertAsyncTask extends AsyncTask<List<QuestionsEntity>, Void, Void>{
-
-        private QuestionsDAO questionsDAO;
-
-        private QuestionsInsertAsyncTask(QuestionsDAO questionsDAO){
-            this.questionsDAO = questionsDAO;
-        }
-
-        @SafeVarargs
-        @Override
-        protected final Void doInBackground(List<QuestionsEntity>... lists) {
-            questionsDAO.insert(lists[0]);
-            return null;
-        }
     }
 
 

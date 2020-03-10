@@ -1,5 +1,6 @@
 package com.example.collegebuddyversion2.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.collegebuddyversion2.Activities.AskQuestionActivity;
 import com.example.collegebuddyversion2.Adapter.QuestionsAdapter;
 import com.example.collegebuddyversion2.Entity.QuestionsEntity;
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
 import com.example.collegebuddyversion2.ViewModels.QuestionsViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,6 +41,14 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.question_fragment, container, false);
+        FloatingActionButton ask_fab = view.findViewById(R.id.ask_question_floating_button);
+        ask_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AskQuestionActivity.class);
+                startActivity(intent);
+            }
+        });
         questionsRecyclerView = view.findViewById(R.id.questions_recycler_view);
         questionsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         questionsRecyclerView.setHasFixedSize(true);
@@ -52,12 +63,5 @@ public class QuestionFragment extends Fragment {
         });
         return view;
     }
-
-//    @Override
-//    public void onSaveInstanceState(@NonNull Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putSerializable("list", (Serializable) questionsEntityList);
-//
-//    }
 
 }

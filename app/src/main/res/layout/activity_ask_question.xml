@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AskQuestionActivity"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_ask_question_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/short_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/enter_question_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text"
+        android:gravity="start"
+        android:hint="Description"
+        android:padding="16dp"
+        android:textAlignment="viewStart"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_ask_question_activity" />
+
+    <Button
+        android:id="@+id/ask_question_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/ask_button"
+        android:text="Post"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/enter_question_edit_text"
+        app:layout_constraintTop_toTopOf="@+id/question_anonymous_checkbox" />
+
+    <CheckBox
+        android:id="@+id/question_anonymous_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ask anonymously"
+        android:onClick="askAnonymously"
+        app:layout_constraintStart_toStartOf="@+id/enter_question_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/enter_question_edit_text" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Ask your question"
+        android:textColor="#FFF"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/ask_question_activity_back_image"
+        app:layout_constraintTop_toTopOf="@+id/ask_question_activity_back_image" />
+
+    <ImageView
+        android:id="@+id/ask_question_activity_back_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back"
+        tools:ignore="VectorDrawableCompat" />
+</androidx.constraintlayout.widget.ConstraintLayout>
