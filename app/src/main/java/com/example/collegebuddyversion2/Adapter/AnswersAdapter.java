@@ -12,11 +12,12 @@ import com.example.collegebuddyversion2.Models.Answers;
 import com.example.collegebuddyversion2.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.answerHolder> {
 
-    private ArrayList<Answers> answersList;
-    public AnswersAdapter(ArrayList<Answers> data){
+    private List<Answers> answersList;
+    public AnswersAdapter(List<Answers> data){
         answersList = data;
     }
 

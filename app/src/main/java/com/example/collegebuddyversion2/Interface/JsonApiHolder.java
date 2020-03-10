@@ -40,4 +40,8 @@ public interface JsonApiHolder {
 
     @GET("Dashboard/QuestionDetails/{QID}")
     Call<List<Answers>> getAnswers(@Path("QID") String id , @Query("token") String token);
+
+    @POST("Dashboard/AddAnswer/{QID}")
+    Call<ResponseBody> addAnswer(@Path("QID") String id , @Query("token")  String token ,
+                                 @Body String answer);
 }
