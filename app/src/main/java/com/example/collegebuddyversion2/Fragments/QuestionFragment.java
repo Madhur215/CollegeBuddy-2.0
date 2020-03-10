@@ -17,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.collegebuddyversion2.Activities.AskQuestionActivity;
+import com.example.collegebuddyversion2.Activities.ViewAnswersActivity;
 import com.example.collegebuddyversion2.Adapter.QuestionsAdapter;
 import com.example.collegebuddyversion2.Entity.QuestionsEntity;
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
+import com.example.collegebuddyversion2.Models.Questions;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
 import com.example.collegebuddyversion2.ViewModels.QuestionsViewModel;
@@ -31,7 +33,12 @@ import java.util.List;
 
 public class QuestionFragment extends Fragment {
 
-    private List<QuestionsEntity>  questionsEntityList = new ArrayList<>();
+    public final static String QUESTION_ID ="qid";
+    public final static String QUESTION = "question";
+    public final static String ASKED_BY_NAME = "name";
+    public final static String IMAGE_URI = "image";
+
+    private List<Questions>  questionsList = new ArrayList<>();
     private QuestionsViewModel questionsViewModel;
     private QuestionsAdapter questionsAdapter;
     private RecyclerView questionsRecyclerView;
@@ -54,11 +61,23 @@ public class QuestionFragment extends Fragment {
         questionsRecyclerView.setHasFixedSize(true);
         questionsViewModel = ViewModelProviders.of(QuestionFragment.this).get(QuestionsViewModel.class);
         questionsViewModel.getQuestionsList().observe(getViewLifecycleOwner(),
-                new Observer<List<QuestionsEntity>>() {
+                new Observer<List<Questions>>() {
             @Override
-            public void onChanged(List<QuestionsEntity> questionsEntityList) {
-                questionsAdapter = new QuestionsAdapter(questionsEntityList, getContext());
+            public void onChanged(final List<Questions> questionsList) {
+                questionsAdapter = new QuestionsAdapter(questionsList, getContext());
                 questionsRecyclerView.setAdapter(questionsAdapter);
+                questionsAdapter.setOnQuestionClickListener(new QuestionsAdapter.OnQuestionClickListener() {
+                    @Override
+                    public void onQuestionClick(int position) {
+                        Questions clickedQuestion = questionsList.get(position);
+                        Intent i = new Intent(getContext(), ViewAnswersActivity.class);
+                        i.putExtra(QUESTION_ID, clickedQuestion.getQid());
+                        i.putExtra(QUESTION, clickedQuestion.getQuestion());
+                        i.putExtra(ASKED_BY_NAME, clickedQuestion.getName());
+                        i.putExtra(IMAGE_URI , clickedQuestion.getImage());
+                        startActivity(i);
+                    }
+                });
             }
         });
         return view;

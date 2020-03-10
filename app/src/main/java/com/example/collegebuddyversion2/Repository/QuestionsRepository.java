@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.collegebuddyversion2.Entity.QuestionsEntity;
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
+import com.example.collegebuddyversion2.Models.Questions;
 import com.example.collegebuddyversion2.Models.QuestionsResponse;
 import com.example.collegebuddyversion2.Utils.prefUtils;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class QuestionsRepository {
 
-    private MutableLiveData<List<QuestionsEntity>> questionsList = new MutableLiveData<>();
+    private MutableLiveData<List<Questions>> questionsList = new MutableLiveData<>();
     private JsonApiHolder jsonApiHolder;
     private Application application;
 
@@ -83,7 +84,7 @@ public class QuestionsRepository {
             public void onResponse(Call<List<QuestionsResponse>> call,
                                    Response<List<QuestionsResponse>> response) {
                 if (response.isSuccessful()) {
-                    List<QuestionsEntity> questionsEntityList = new ArrayList<>();
+                    List<Questions> quesList = new ArrayList<>();
                     try {
 
                         List<QuestionsResponse> questions = response.body();
@@ -95,10 +96,10 @@ public class QuestionsRepository {
                             String name = question.getAsked_by_name();
                             String date = question.getAsked_on_date();
                             String image = question.getImage();
-                            QuestionsEntity entity = new QuestionsEntity(q, qId, name, date, image);
-                            questionsEntityList.add(entity);
+                            Questions qList = new Questions(q, qId, name, date, image);
+                            quesList.add(qList);
                         }
-                        questionsList.setValue(questionsEntityList);
+                        questionsList.setValue(quesList);
                     } catch (NullPointerException e) {
                         Log.d(String.valueOf(e), "onResponse: EMPTY ARRAY");
                     }
@@ -127,10 +128,8 @@ public class QuestionsRepository {
 
     }
 
-    public LiveData<List<QuestionsEntity>> getQuestionsList(){
+    public LiveData<List<Questions>> getQuestionsList(){
         return questionsList;
     }
-
-
 
 }

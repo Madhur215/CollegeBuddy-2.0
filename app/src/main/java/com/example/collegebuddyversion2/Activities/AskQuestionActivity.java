@@ -3,6 +3,7 @@ package com.example.collegebuddyversion2.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,6 +25,7 @@ import com.example.collegebuddyversion2.Interface.JsonApiHolder;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.Utils.prefUtils;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
+import com.example.collegebuddyversion2.ViewModels.AskQuestionViewModel;
 
 import java.util.HashMap;
 
@@ -35,10 +37,9 @@ import retrofit2.Response;
 public class AskQuestionActivity extends AppCompatActivity {
 
     private String question;
-    private JsonApiHolder jsonApiHolder;
-    prefUtils pr;
     private String ask_anonymous = "false";
     EditText ask_question_edit_text;
+    private AskQuestionViewModel askQuestionViewModel;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -49,10 +50,12 @@ public class AskQuestionActivity extends AppCompatActivity {
         if(!isConnected(this)){
             buildDialog(this).show();
         }
+
+        askQuestionViewModel = ViewModelProviders.of(AskQuestionActivity.this)
+                .get(AskQuestionViewModel.class);
+
         ask_question_edit_text = findViewById(R.id.enter_question_edit_text);
         Button ask_button = findViewById(R.id.ask_question_button);
-        jsonApiHolder = retrofitInstance.getRetrofitInstance(this).create(JsonApiHolder.class);
-        pr = new prefUtils(this);
         Toolbar toolbar = findViewById(R.id.toolbar_ask_question_activity);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
@@ -75,7 +78,8 @@ public class AskQuestionActivity extends AppCompatActivity {
                 if(checkQuestion()) {
                     closeKeyboard();
                     question = ask_question_edit_text.getText().toString().trim();
-                    askQuestion(question);
+                    askQuestionViewModel.PostQuestion(question);
+                    finish();
                 }
             }
         });
@@ -89,28 +93,6 @@ public class AskQuestionActivity extends AppCompatActivity {
             InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken() , 0);
         }
-    }
-
-    public void askQuestion(String question){
-
-        Call<ResponseBody> call = jsonApiHolder.askQuestion(prefUtils.getToken() , question);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(AskQuestionActivity.this, "Question Added!", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                else {
-                    Toast.makeText(AskQuestionActivity.this, "An Error Occurred!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(AskQuestionActivity.this, "No response from the server!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void askAnonymously(View view) {

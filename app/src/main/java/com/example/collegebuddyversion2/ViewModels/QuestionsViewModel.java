@@ -7,13 +7,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.collegebuddyversion2.Entity.QuestionsEntity;
+import com.example.collegebuddyversion2.Models.Questions;
 import com.example.collegebuddyversion2.Repository.QuestionsRepository;
 
 import java.util.List;
 
 public class QuestionsViewModel extends AndroidViewModel {
 
-    private LiveData<List<QuestionsEntity>> questionsList;
+    private LiveData<List<Questions>> questionsList;
 
     public QuestionsViewModel(@NonNull Application application) {
         super(application);
@@ -21,7 +22,7 @@ public class QuestionsViewModel extends AndroidViewModel {
         questionsList = questionsRepository.getQuestionsList();
     }
 
-    public LiveData<List<QuestionsEntity>> getQuestionsList(){
+    public LiveData<List<Questions>> getQuestionsList(){
         return questionsList;
     }
 }
