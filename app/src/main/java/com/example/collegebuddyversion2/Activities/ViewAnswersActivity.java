@@ -42,7 +42,6 @@ public class ViewAnswersActivity extends AppCompatActivity {
     TextView question_text_view;
     TextView asked_by_name_text_view;
     ImageView asked_by_image;
-    private AnswersViewModel answersViewModel;
     private AnswersAdapter answersAdapter;
     private RecyclerView answersRecyclerView;
     private PostAnswerViewModel postAnswerViewModel;
@@ -80,7 +79,7 @@ public class ViewAnswersActivity extends AppCompatActivity {
             }
         });
         postAnswerViewModel = ViewModelProviders.of(this).get(PostAnswerViewModel.class);
-        answersViewModel = ViewModelProviders.of(this).get(AnswersViewModel.class);
+        AnswersViewModel answersViewModel = ViewModelProviders.of(this).get(AnswersViewModel.class);
         answersViewModel.getAnswersList().observe(this, new Observer<List<Answers>>() {
             @Override
             public void onChanged(List<Answers> answers) {

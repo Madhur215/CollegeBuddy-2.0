@@ -20,19 +20,28 @@ import java.util.List;
 
 public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.questionHolder> {
 
-    private List<Questions>questionsEntityList;
+    private List<Questions> questionsEntityList;
     private Context context;
     private retrofitInstance rf = new retrofitInstance();
     private OnQuestionClickListener mListener;
 
-    public QuestionsAdapter(List<Questions> questionsEntityList, Context context){
-        this.questionsEntityList = questionsEntityList;
-        this.context = context;
+//    public QuestionsAdapter(List<Questions> questionsEntityList, Context context){
+//        this.questionsEntityList = questionsEntityList;
+//        this.context = context;
+//
+//    }
 
+    public void setQuestions(List<Questions> qList){
+        questionsEntityList = qList;
+        notifyDataSetChanged();
+    }
+
+    public QuestionsAdapter(Context context){
+        this.context = context;
     }
 
     public interface OnQuestionClickListener {
-        void onQuestionClick(int position);
+        void onQuestionClick(Questions questions);
     }
 
     public void setOnQuestionClickListener(OnQuestionClickListener listener){
@@ -60,7 +69,13 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ques
 
     @Override
     public int getItemCount() {
-        return questionsEntityList.size();
+        try {
+            return questionsEntityList.size();
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     class questionHolder extends RecyclerView.ViewHolder{
@@ -84,7 +99,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ques
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onQuestionClick(position);
+                            listener.onQuestionClick(questionsEntityList.get(getAdapterPosition()));
                         }
                     }
                 }
