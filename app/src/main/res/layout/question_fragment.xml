@@ -37,6 +37,16 @@
                 android:textSize="32sp"
                 android:padding="12dp"/>
 
+            <TextView
+                android:id="@+id/college_name_question_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="College"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:layout_marginTop="60dp"
+                android:paddingLeft="12dp"/>
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"

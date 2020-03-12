@@ -2,10 +2,13 @@ package com.example.collegebuddyversion2.Fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.AlphabeticIndex;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +27,7 @@ import com.example.collegebuddyversion2.Entity.QuestionsEntity;
 import com.example.collegebuddyversion2.Interface.JsonApiHolder;
 import com.example.collegebuddyversion2.Models.Questions;
 import com.example.collegebuddyversion2.R;
+import com.example.collegebuddyversion2.Utils.prefUtils;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
 import com.example.collegebuddyversion2.ViewModels.QuestionsViewModel;
 import com.google.android.material.appbar.AppBarLayout;
@@ -53,6 +57,8 @@ public class QuestionFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.question_fragment, container, false);
         FloatingActionButton ask_fab = view.findViewById(R.id.ask_question_floating_button);
+        TextView college_name = view.findViewById(R.id.college_name_question_fragment);
+        college_name.setText(prefUtils.getCOLLEGE());
         ask_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

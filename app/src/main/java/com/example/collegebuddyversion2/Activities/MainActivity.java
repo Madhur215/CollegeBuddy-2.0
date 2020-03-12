@@ -3,7 +3,7 @@ package com.example.collegebuddyversion2.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,6 +17,7 @@ import com.example.collegebuddyversion2.Interface.JsonApiHolder;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.Utils.prefUtils;
 import com.example.collegebuddyversion2.Utils.retrofitInstance;
+import com.example.collegebuddyversion2.ViewModels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment selectedFragment;
     JsonApiHolder jsonApiHolder;
     private prefUtils pr;
+    private ProfileViewModel profileViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         jsonApiHolder = retrofitInstance.getRetrofitInstance(this).create(JsonApiHolder.class);
         pr = new prefUtils(this);
 
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        if(!pr.isProfileSaved()) {
+            profileViewModel.getProfile();
+        }
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main,
                     new HomeFragment()).commit();

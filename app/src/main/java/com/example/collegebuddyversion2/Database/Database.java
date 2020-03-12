@@ -2,7 +2,6 @@ package com.example.collegebuddyversion2.Database;
 
 
 import android.content.Context;
-import android.provider.ContactsContract;
 
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
