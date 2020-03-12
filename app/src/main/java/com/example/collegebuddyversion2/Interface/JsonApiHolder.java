@@ -1,6 +1,7 @@
 package com.example.collegebuddyversion2.Interface;
 
 import com.example.collegebuddyversion2.Models.Answers;
+import com.example.collegebuddyversion2.Models.EditDetails;
 import com.example.collegebuddyversion2.Models.LoginData;
 import com.example.collegebuddyversion2.Models.LoginResponse;
 import com.example.collegebuddyversion2.Models.Profile;
@@ -11,11 +12,15 @@ import com.example.collegebuddyversion2.Models.SignUpResponse;
 import java.util.List;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -46,9 +51,17 @@ public interface JsonApiHolder {
     Call<ResponseBody> addAnswer(@Path("QID") String id , @Query("token")  String token ,
                                  @Body String answer);
 
-//    @GET("Member/Profile")
-//    Call<List<ProfileEntity>> getProfile(@Query("token") String token);
-
     @GET("Member/Profile")
     Single<List<Profile>> getProfile(@Query("token") String token);
+
+    @Multipart
+    @POST("Contacts/ImageUpload")
+    Call<ResponseBody> uploadImage(@Part MultipartBody.Part file, @Part("name") RequestBody requestBody ,
+                                   @Query("token") String token);
+
+    @GET("Contact/QuestionTab")
+    Single<List<QuestionsResponse>> getUserQuestions(@Query("token") String token);
+
+    @POST("Member/EditProfile")
+    Single<String> editProfile(@Query("token") String token , @Body EditDetails data );
 }
