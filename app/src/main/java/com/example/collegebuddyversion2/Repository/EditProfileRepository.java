@@ -19,13 +19,14 @@ public class EditProfileRepository {
     private JsonApiHolder jsonApiHolder;
     private Application application;
     private CompositeDisposable disposable = new CompositeDisposable();
+    private int result = 0;
 
     public EditProfileRepository(Application application){
         jsonApiHolder = retrofitInstance.getRetrofitInstance(application).create(JsonApiHolder.class);
         this.application = application;
     }
 
-    public void editProfile(EditDetails data){
+    public int editProfile(EditDetails data){
         disposable.add(
                 jsonApiHolder.editProfile(prefUtils.getToken(), data)
                 .subscribeOn(Schedulers.io())
@@ -35,6 +36,7 @@ public class EditProfileRepository {
                     @Override
                     public void onSuccess(String s) {
                         Toast.makeText(application, s, Toast.LENGTH_SHORT).show();
+                        result = 100;
                     }
 
                     @Override
@@ -44,7 +46,7 @@ public class EditProfileRepository {
                 })
         );
 
-
+        return result;
     }
 
 }

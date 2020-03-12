@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.collegebuddyversion2.Models.EditDetails;
 import com.example.collegebuddyversion2.R;
 import com.example.collegebuddyversion2.ViewModels.EditProfileViewModel;
+import com.example.collegebuddyversion2.ViewModels.ProfileViewModel;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText old_password_edit_text;
     private String p;
     private EditProfileViewModel editProfileViewModel;
+    private ProfileViewModel profileViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
         editProfileViewModel = new ViewModelProvider(this).get(EditProfileViewModel.class);
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
         save_details_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,9 +71,11 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void editProfile() {
-        editProfileViewModel.editProfile(editDetails);
-        //TODO FINISH THIS ACTIVITY
-        //TODO UPDATE USER DETAILS IN SHARED PREFERENCES
+        int result = editProfileViewModel.editProfile(editDetails);
+        if(result == 100){
+            profileViewModel.getProfile();
+        }
+        finish();
     }
 
     private boolean checkOldPassword() {

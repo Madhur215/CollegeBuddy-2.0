@@ -17,7 +17,7 @@ public class EditProfileViewModel extends AndroidViewModel {
         editDetailsRepository = new EditProfileRepository(application);
     }
 
-    public void editProfile(EditDetails data){
-        editDetailsRepository.editProfile(data);
+    public int editProfile(EditDetails data){
+        return editDetailsRepository.editProfile(data);
     }
 }

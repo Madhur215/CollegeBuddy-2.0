@@ -33,6 +33,11 @@ import java.util.List;
 
 public class ViewAnswersActivity extends AppCompatActivity {
 
+    public static final String QUESTION_ID = "qid";
+    public static final String QUESTION = "question";
+    public static final String ASKED_BY_NAME = "name";
+    public static final String IMAGE_URI = "image";
+
     public static String question_id;
     String question;
     String asked_by_name;
@@ -52,9 +57,9 @@ public class ViewAnswersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_answers);
 
         Intent i = getIntent();
-        question_id = i.getStringExtra(QuestionFragment.QUESTION_ID);
-        question = i.getStringExtra(QuestionFragment.QUESTION);
-        asked_by_name = i.getStringExtra(QuestionFragment.ASKED_BY_NAME);
+        question_id = i.getStringExtra(QUESTION_ID);
+        question = i.getStringExtra(QUESTION);
+        asked_by_name = i.getStringExtra(ASKED_BY_NAME);
         answersRecyclerView = findViewById(R.id.answers_recycler_view);
         answersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         answersRecyclerView.setHasFixedSize(true);
@@ -65,7 +70,7 @@ public class ViewAnswersActivity extends AppCompatActivity {
         asked_by_image = findViewById(R.id.asked_by_user_image_write_answer);
         question_text_view.setText(question);
         asked_by_name_text_view.setText(asked_by_name);
-        setImage(i.getStringExtra(QuestionFragment.IMAGE_URI));
+        setImage(i.getStringExtra(IMAGE_URI));
         post_answer_button = findViewById(R.id.post_answer_button);
 
         setSupportActionBar(answer_toolbar);

@@ -40,10 +40,10 @@ import java.util.List;
 
 public class QuestionFragment extends Fragment {
 
-    public final static String QUESTION_ID ="qid";
-    public final static String QUESTION = "question";
-    public final static String ASKED_BY_NAME = "name";
-    public final static String IMAGE_URI = "image";
+//    public final static String QUESTION_ID ="qid";
+//    public final static String QUESTION = "question";
+//    public final static String ASKED_BY_NAME = "name";
+//    public final static String IMAGE_URI = "image";
 
 //    private LiveData<List<Questions>>  questionsList = new LiveData<>();
 //    private QuestionsAdapter questionsAdapter;
@@ -75,7 +75,6 @@ public class QuestionFragment extends Fragment {
         questionsRecyclerView.setAdapter(questionsAdapter);
 
 
-
         QuestionsViewModel questionsViewModel= new ViewModelProvider(QuestionFragment.this)
                 .get(QuestionsViewModel.class);
         questionsViewModel.getQuestionsList().observe(getViewLifecycleOwner(),
@@ -104,10 +103,10 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onQuestionClick(Questions questions) {
                 Intent i = new Intent(getContext(), ViewAnswersActivity.class);
-                i.putExtra(QUESTION_ID, questions.getQid());
-                i.putExtra(QUESTION, questions.getQuestion());
-                i.putExtra(ASKED_BY_NAME, questions.getName());
-                i.putExtra(IMAGE_URI , questions.getImage());
+                i.putExtra(ViewAnswersActivity.QUESTION_ID, questions.getQid());
+                i.putExtra(ViewAnswersActivity.QUESTION, questions.getQuestion());
+                i.putExtra(ViewAnswersActivity.ASKED_BY_NAME, questions.getName());
+                i.putExtra(ViewAnswersActivity.IMAGE_URI , questions.getImage());
                 startActivity(i);
             }
         });
