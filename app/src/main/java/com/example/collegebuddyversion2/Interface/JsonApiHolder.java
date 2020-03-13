@@ -4,10 +4,13 @@ import com.example.collegebuddyversion2.Models.Answers;
 import com.example.collegebuddyversion2.Models.EditDetails;
 import com.example.collegebuddyversion2.Models.LoginData;
 import com.example.collegebuddyversion2.Models.LoginResponse;
+import com.example.collegebuddyversion2.Models.Members;
 import com.example.collegebuddyversion2.Models.Profile;
 import com.example.collegebuddyversion2.Models.QuestionsResponse;
 import com.example.collegebuddyversion2.Models.SignUpData;
 import com.example.collegebuddyversion2.Models.SignUpResponse;
+import com.example.collegebuddyversion2.Models.SubjectPdfList;
+import com.example.collegebuddyversion2.Models.Subjects;
 
 import java.util.List;
 
@@ -64,4 +67,19 @@ public interface JsonApiHolder {
 
     @POST("Member/EditProfile")
     Single<String> editProfile(@Query("token") String token , @Body EditDetails data );
+
+    @POST("PDFController/AddToLibrary/{PKEY}")
+    Call<String> addToLibrary(@Path("PKEY") int key , @Query("token") String token);
+
+    @GET("PDFController/Library")
+    Single<List<SubjectPdfList>> getLibrary(@Query("token") String token);
+
+    @GET("Contact/List")
+    Call<List<Members>> getMembers(@Query("token") String token);
+
+    @GET("Contact/SubjectList")
+    Single<List<Subjects>> getSubjects(@Query("token") String token);
+
+    @GET("PDFcontroller/SubjectPDF")
+    Call<List<SubjectPdfList>> getPdfs(@Query("token") String token , @Query("key") String key);
 }

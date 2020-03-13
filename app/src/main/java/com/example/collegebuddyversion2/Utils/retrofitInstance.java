@@ -21,10 +21,10 @@ public class retrofitInstance {
     private static Retrofit retrofit = null;
     private static int REQUEST_TIMEOUT = 60;
     private static OkHttpClient okHttpClient;
-    private static String BASE_URL = "https://f2843cc8.ngrok.io/api/";
+    private static String BASE_URL = "https://190b35df.ngrok.io/api/";
 
     public static String getURL(){
-        return "https://f2843cc8.ngrok.io/";
+        return "https://190b35df.ngrok.io/";
     }
 
     public static Retrofit getRetrofitInstance(Context context) {

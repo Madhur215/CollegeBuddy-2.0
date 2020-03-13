@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/coordinator_layout"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="55dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -24,17 +26,114 @@
                 android:layout_height="200dp"
                 android:src="@drawable/toolbar_img"
                 android:scaleType="centerCrop"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image_home"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/no_image" />
+
+
+            <TextView
+                android:id="@+id/year_text_view_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="82dp"
+                android:layout_marginLeft="16dp"
+                android:text="2nd"
+                android:textColor="#FFF"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="82dp"
+                android:layout_marginLeft="60dp"
+                android:text="Year"
+                android:textColor="#FFF"
+                android:textSize="21sp"/>
+
+            <TextView
+                android:id="@+id/branch_text_view_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="82dp"
+                android:layout_marginLeft="108dp"
+                android:text="CSE"
+                android:textColor="#FFF"
+                android:textSize="21sp" />
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 />
-            
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
 
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Your Subjects"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <GridView
+            android:id="@+id/subjects_grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_below="@+id/textView15"
+            android:layout_marginTop="16dp"
+            android:horizontalSpacing="8dp"
+            android:numColumns="2"
+            android:paddingRight="6dp"
+            android:verticalSpacing="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subjects_grid_view"
+            android:layout_marginTop="16dp"
+            android:text="Your Library"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/subjects_grid_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/library_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

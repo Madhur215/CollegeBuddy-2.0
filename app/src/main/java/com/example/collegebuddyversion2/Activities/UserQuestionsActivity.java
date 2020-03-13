@@ -23,15 +23,9 @@ import java.util.List;
 
 public class UserQuestionsActivity extends AppCompatActivity {
 
-    public static String USER_QUESTION_ID ;
-    public static String USER_QUESTION ;
-    public static String USER_ASKED_BY_NAME;
-    public static String USER_DATE;
-
 //    private ArrayList<Questions> questionsList;
     private UserQuestionViewModel userQuestionViewModel;
     private QuestionsAdapter userQuestionAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

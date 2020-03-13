@@ -40,10 +40,6 @@ import java.util.List;
 
 public class QuestionFragment extends Fragment {
 
-//    public final static String QUESTION_ID ="qid";
-//    public final static String QUESTION = "question";
-//    public final static String ASKED_BY_NAME = "name";
-//    public final static String IMAGE_URI = "image";
 
 //    private LiveData<List<Questions>>  questionsList = new LiveData<>();
 //    private QuestionsAdapter questionsAdapter;
