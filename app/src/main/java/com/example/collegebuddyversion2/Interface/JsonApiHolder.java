@@ -81,5 +81,5 @@ public interface JsonApiHolder {
     Single<List<Subjects>> getSubjects(@Query("token") String token);
 
     @GET("PDFcontroller/SubjectPDF")
-    Call<List<SubjectPdfList>> getPdfs(@Query("token") String token , @Query("key") String key);
+    Single<List<SubjectPdfList>> getPdfs(@Query("token") String token , @Query("key") String key);
 }

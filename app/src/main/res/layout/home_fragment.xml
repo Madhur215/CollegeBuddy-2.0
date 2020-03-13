@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/app_bar_layout"
+        android:id="@+id/app_bar_layout_home"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         >
 
@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            android:id="@+id/collapsing_toolbar_layout_home"
             app:contentScrim="@color/colorPrimaryDark"
             >
 
@@ -74,6 +75,12 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+    <WebView
+        android:id="@+id/pdf_web_view_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

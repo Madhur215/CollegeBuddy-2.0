@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.question:
                             selectedFragment = new QuestionFragment();
                             break;
-                        case R.id.downloads:
-                            selectedFragment = new DownloadFragment();
-                            break;
+//                        case R.id.downloads:
+//                            selectedFragment = new DownloadFragment();
+//                            break;
                         case R.id.explore:
                             selectedFragment = new ExploreFragment();
                             break;
