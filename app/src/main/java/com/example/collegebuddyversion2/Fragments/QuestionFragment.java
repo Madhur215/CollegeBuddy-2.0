@@ -77,20 +77,6 @@ public class QuestionFragment extends Fragment {
                 new Observer<List<Questions>>() {
             @Override
             public void onChanged(final List<Questions> questionsList) {
-//                questionsAdapter = new QuestionsAdapter(questionsList, getContext());
-//                questionsRecyclerView.setAdapter(questionsAdapter);
-//                questionsAdapter.setOnQuestionClickListener(new QuestionsAdapter.OnQuestionClickListener() {
-//                    @Override
-//                    public void onQuestionClick(int position) {
-//                        Questions clickedQuestion = questionsList.get(position);
-//                        Intent i = new Intent(getContext(), ViewAnswersActivity.class);
-//                        i.putExtra(QUESTION_ID, clickedQuestion.getQid());
-//                        i.putExtra(QUESTION, clickedQuestion.getQuestion());
-//                        i.putExtra(ASKED_BY_NAME, clickedQuestion.getName());
-//                        i.putExtra(IMAGE_URI , clickedQuestion.getImage());
-//                        startActivity(i);
-//                    }
-//                });
                 questionsAdapter.setQuestions(questionsList);
             }
         });

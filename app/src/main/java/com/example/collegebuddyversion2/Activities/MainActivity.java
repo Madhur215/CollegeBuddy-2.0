@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.collegebuddyversion2.Fragments.DownloadFragment;
 import com.example.collegebuddyversion2.Fragments.ExploreFragment;
 import com.example.collegebuddyversion2.Fragments.HomeFragment;
 import com.example.collegebuddyversion2.Fragments.ProfileFragment;

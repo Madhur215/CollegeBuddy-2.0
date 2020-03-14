@@ -12,6 +12,7 @@ import com.example.collegebuddyversion2.Models.SignUpResponse;
 import com.example.collegebuddyversion2.Models.SubjectPdfList;
 import com.example.collegebuddyversion2.Models.Subjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -75,7 +76,7 @@ public interface JsonApiHolder {
     Single<List<SubjectPdfList>> getLibrary(@Query("token") String token);
 
     @GET("Contact/List")
-    Call<List<Members>> getMembers(@Query("token") String token);
+    Single<ArrayList<Members>> getMembers(@Query("token") String token);
 
     @GET("Contact/SubjectList")
     Single<List<Subjects>> getSubjects(@Query("token") String token);

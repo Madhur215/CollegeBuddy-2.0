@@ -159,6 +159,9 @@ public class HomeFragment extends Fragment {
     }
 
     //TODO DELETE PDF FROM LIBRARY
+    //TODO Explore fragment
+    //TODO Data binding
+    //TODO send an int with intent to start main activity to automatically refresh after question added
 
 }
 
